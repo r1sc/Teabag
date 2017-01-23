@@ -1,0 +1,5 @@
+<Bindings>
+   <Binding name="TEABAG_TOGGLE" description="Toggle Teabag" header="TEABAG">
+      TeabagToggle()
+   </Binding>
+</Bindings>

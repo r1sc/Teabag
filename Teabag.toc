@@ -1,0 +1,10 @@
+## Interface: 11200
+## LoadOnDemand: 0
+## Title: Teabag
+## Author: r1sc
+## Version: 0.0.1
+## Notes: Shows your inventory ordered by item type
+## SavedVariables: TEABAG_COLUMNS
+## OptionalDeps:
+Teabag.lua
+Teabag.xml
