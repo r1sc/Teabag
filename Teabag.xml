@@ -80,7 +80,7 @@
 	</Frame>
 	<Frame name="TeabagFrame" parent="UIParent" toplevel="true" hidden="true" enableMouse="true" movable="true">
 		<Size>
-			<AbsDimension x="250" y="200" />
+			<AbsDimension x="250" y="500" />
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER" />
@@ -113,42 +113,6 @@
 			</Layer>
 		</Layers>
 		<Frames>
-			<!-- <Button name="$parentItem1" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem2" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem3" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem4" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem5" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem6" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem7" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem8" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem9" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem10" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem11" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem12" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem13" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem14" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem15" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem16" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem17" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem18" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem19" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem20" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem21" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem22" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem23" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem24" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem25" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem26" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem27" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem28" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem29" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem30" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem31" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem32" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem33" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem34" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem35" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
-			<!-- <Button name="$parentItem36" inherits="TeabagFrameItemButtonTemplate" hidden="true"/> -->
 		</Frames>
 		<Scripts>
 			<OnLoad>

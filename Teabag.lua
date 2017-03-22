@@ -2,6 +2,10 @@ TEABAG_COLUMNS = 6
 BINDING_HEADER_TEABAG = "Teabag"
 BINDING_NAME_TEABAG_TOGGLE = "Toggle Teabag"
 
+function print(msg)
+	DEFAULT_CHAT_FRAME:AddMessage(msg)
+end
+
 function Teabag_OnLoad()	
 	print("Teabag loaded.")
 	
@@ -11,6 +15,39 @@ function Teabag_OnLoad()
 	this:RegisterEvent("BAG_UPDATE_COOLDOWN");
 	this:RegisterEvent("ITEM_LOCK_CHANGED");
 	this:RegisterEvent("UPDATE_INVENTORY_ALERTS");
+	
+	
+	TeabagFrame:EnableMouseWheel(true)
+	TeabagFrame:SetScript("OnMouseWheel", function()
+		ScrollFrameTemplate_OnMouseWheel(arg1)
+	end)
+	
+	--scrollframe 
+	scrollframe = CreateFrame("ScrollFrame", "TeabagScrollFrame", TeabagFrame) 
+	scrollframe:SetPoint("TOPLEFT", 0, -30) 
+	scrollframe:SetPoint("BOTTOMRIGHT", 0, 10)
+	TeabagFrame.scrollframe = scrollframe 
+	 
+	--scrollbar 
+	scrollbar = CreateFrame("Slider", "TeabagFrameScrollBar", scrollframe, "UIPanelScrollBarTemplate") 
+	scrollbar:SetPoint("TOPLEFT", TeabagFrame, "TOPRIGHT", 4, -16) 
+	scrollbar:SetPoint("BOTTOMLEFT", TeabagFrame, "BOTTOMRIGHT", 4, 16) 
+	scrollbar:SetValueStep(1) 
+	scrollbar.scrollStep = 1
+	scrollbar:SetValue(0) 
+	scrollbar:SetWidth(16) 
+	scrollbar:SetScript("OnValueChanged", function () 
+		TeabagScrollFrame:SetVerticalScroll(arg1) 
+	end) 
+	local scrollbg = scrollbar:CreateTexture(nil, "BACKGROUND") 
+	scrollbg:SetAllPoints(scrollbar) 
+	scrollbg:SetTexture(0, 0, 0, 0.4) 
+	TeabagFrame.scrollBar = scrollbar 
+	 
+	--content frame 
+	local content = CreateFrame("Frame", "TeabagContentFrame", scrollframe)
+	scrollframe.content = content 	
+	scrollframe:SetScrollChild(content)
 	
 end
 
@@ -32,11 +69,11 @@ function TeabagToggle()
 	end
 end
 
--- oldToggleBag = ToggleBag
--- function ToggleBag(id)
-	-- TeabagFrame:Show()
-	-- oldToggleBag(id)
--- end
+oldToggleBag = ToggleBag
+function ToggleBag(id)
+	TeabagFrame:Show()
+	--oldToggleBag(id)
+end
 
 -- oldToggleBackpack = ToggleBackpack
 -- function ToggleBackpack()
@@ -62,9 +99,11 @@ end
 
 function Teabag_Update()
 	local totalHeight = ShowBag()
-	TeabagFrame:SetID(1)
+	TeabagContentFrame:SetID(1)
 	TeabagFrame:SetWidth(41*TEABAG_COLUMNS+23)
-	TeabagFrame:SetHeight(totalHeight)
+	TeabagContentFrame:SetWidth(41*TEABAG_COLUMNS+23)
+	TeabagContentFrame:SetHeight(totalHeight)
+	TeabagFrameScrollBar:SetMinMaxValues(0, totalHeight - TeabagScrollFrame:GetHeight())
 end
 
 function Teabag_OnShow()
@@ -114,28 +153,51 @@ end
 ]]
 
 function ShowBag()
-	local name="TeabagFrame"
-	local btnId=1
+	local name="TeabagContentFrame"
 	local groupedItems = GroupItems()
-	local totalHeight = 43
+	local totalHeight = 0
+	
+	local btnId=1
+	while true do
+		local itemButton = getglobal(name.."Item"..btnId)
+		if itemButton ~= nil then
+			itemButton:Hide()
+		else
+			break
+		end
+		btnId=btnId+1
+	end
+	btnId=1
 	
 	local groupIndex=1
+	while true do		
+		local group = getglobal(name.."Group"..groupIndex)
+		if group ~= nil then
+			group:Hide()
+		else
+			break
+		end
+		groupIndex=groupIndex+1
+	end
+	groupIndex=1
+	
+	
 	for subtype,items in pairs(groupedItems) do
 		local groupName = name.."Group"..groupIndex
 		local teaBagGroup = getglobal(groupName)
 		
 		if(teaBagGroup == nil) then
-			teaBagGroup = CreateFrame("Frame", groupName, TeabagFrame, "TeabagFrameGroup")
+			teaBagGroup = CreateFrame("Frame", groupName, TeabagContentFrame, "TeabagFrameGroup")
 		end
 		
 		local teaBagGroupText = getglobal(groupName.."Name")
 		local groupRows = ceil(getn(items) / TEABAG_COLUMNS)
-		local height = 42*groupRows+30
+		local height = 42*groupRows+20
 		teaBagGroup:SetHeight(height)
 		teaBagGroupText:SetText(subtype)
 		
 		if groupIndex == 1 then
-			teaBagGroup:SetPoint("TOPLEFT", name, "TOPLEFT", 4, -20)
+			teaBagGroup:SetPoint("TOPLEFT", name, "TOPLEFT", 4, 0)
 		else
 			teaBagGroup:SetPoint("TOPLEFT", name.."Group"..(groupIndex-1), "BOTTOMLEFT", 0, 0)
 		end
