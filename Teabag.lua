@@ -69,11 +69,11 @@ function TeabagToggle()
 	end
 end
 
-oldToggleBag = ToggleBag
-function ToggleBag(id)
-	TeabagFrame:Show()
-	--oldToggleBag(id)
-end
+-- oldToggleBag = ToggleBag
+-- function ToggleBag(id)
+	-- TeabagFrame:Show()
+	-- oldToggleBag(id)
+-- end
 
 -- oldToggleBackpack = ToggleBackpack
 -- function ToggleBackpack()
@@ -188,6 +188,8 @@ function ShowBag()
 		
 		if(teaBagGroup == nil) then
 			teaBagGroup = CreateFrame("Frame", groupName, TeabagContentFrame, "TeabagFrameGroup")
+		else
+			teaBagGroup:Show()
 		end
 		
 		local teaBagGroupText = getglobal(groupName.."Name")
@@ -211,6 +213,8 @@ function ShowBag()
 			
 			if(itemButton == nil) then
 				itemButton = CreateFrame("Button", name.."Item"..btnId, teaBagGroup, "TeabagFrameItemButtonTemplate")
+			else
+				itemButton:Show()
 			end
 			
 			itemButton:SetParent(teaBagGroup)
